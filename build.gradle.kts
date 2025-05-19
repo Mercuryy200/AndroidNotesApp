@@ -1,9 +1,9 @@
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     id("com.google.devtools.ksp")
-    id("io.objectbox")
 }
 
 android {
@@ -43,6 +43,9 @@ android {
 
 dependencies {
     implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.navigation.runtime.android)
+    implementation(libs.androidx.navigation.runtime.jvmstubs)
+    implementation(libs.androidx.navigation.compose.jvmstubs)
     ksp(libs.androidx.room.compiler.v250)
     implementation (libs.androidx.room.ktx)
     implementation(libs.androidx.core.ktx)
@@ -65,4 +68,20 @@ dependencies {
     implementation(libs.objectbox.java.api)
     implementation(libs.objectbox.windows)
     annotationProcessor(libs.objectbox.processor)
+    implementation(platform(libs.androidx.compose.bom.v20240300))
+    implementation(libs.androidx.activity.compose.v180)
+    implementation(libs.material3)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.lifecycle.runtime.ktx.v261)
+    implementation(libs.androidx.room.runtime.v252)
+    implementation(libs.androidx.room.ktx.v252)
+    implementation(libs.androidx.room.rxjava3)
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.androidx.runtime.livedata)
+    implementation(libs.accompanist.systemuicontroller)
+    debugImplementation(libs.ui.tooling)
+    debugImplementation(libs.ui.test.manifest)
+    implementation (libs.androidx.navigation.compose.v253)
 }
