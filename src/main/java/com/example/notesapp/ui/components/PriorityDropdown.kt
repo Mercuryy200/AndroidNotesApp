@@ -34,12 +34,12 @@ fun PriorityDropdown(
     ) {
         TextField(
             value = selected.name,
-            onValueChange = { /* no-op */ },
+            onValueChange = {  },
             readOnly = true,
             label = { Text(stringResource(R.string.label_priority)) },
             trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded) },
             modifier = Modifier
-                .menuAnchor()          // <-- anchor the dropdown to this TextField
+                .menuAnchor()
                 .fillMaxWidth()
         )
 
@@ -48,7 +48,7 @@ fun PriorityDropdown(
             onDismissRequest = { expanded = false },
             modifier = Modifier
                 .fillMaxWidth()
-                .heightIn(max = 200.dp) // <-- cap the height so inner list can scroll
+                .heightIn(max = 200.dp)
         ) {
             Priority.values().forEach { priority ->
                 DropdownMenuItem(

@@ -9,10 +9,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -21,6 +23,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
@@ -29,8 +32,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.notesapp.R
+import com.example.notesapp.ui.components.PriorityChip
 import com.example.notesapp.ui.viewmodel.TaskViewModel
 import org.threeten.bp.Instant
 import org.threeten.bp.ZoneId
@@ -57,11 +62,13 @@ fun TaskDetailScreen(
         Scaffold(
             topBar = {
                 TopAppBar(
-                    title = { Text(text = task?.name ?: "") },
+                    title = { Text(text = task?.name ?: "",   style = MaterialTheme.typography.titleLarge.copy(
+                        fontWeight = FontWeight.Bold
+                    )) },
                     navigationIcon = {
                         IconButton(onClick = onBack) {
                             Icon(
-                                imageVector = Icons.Default.ArrowBack,
+                                imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                                 contentDescription = stringResource(R.string.back)
                             )
                         }
@@ -82,44 +89,65 @@ fun TaskDetailScreen(
                                 )
                             }
                         }
-                    }
+                    },
+                    colors = TopAppBarDefaults.topAppBarColors(
+                        containerColor = MaterialTheme.colorScheme.primaryContainer,
+                        titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer
+                    )
                 )
-            }
+            },
+            containerColor = MaterialTheme.colorScheme.background
+
         ) { padding ->
-            Column(
+            Card(
                 modifier = Modifier
                     .padding(padding)
-                    .verticalScroll(rememberScrollState())
                     .padding(16.dp)
+                    .fillMaxSize(),
+                colors = CardDefaults.cardColors(
+                    containerColor = MaterialTheme.colorScheme.surface
+                ),
+                elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
             ) {
-                task?.let { t ->
-                    Text(
-                        text = stringResource(R.string.label_name) + ": " + t.name,
-                        style = MaterialTheme.typography.bodyLarge
-                    )
-                    Spacer(modifier = Modifier.height(8.dp))
+                Column(
+                    modifier = Modifier
+                        .verticalScroll(rememberScrollState())
+                        .padding(16.dp)
+                ) {
+                    task?.let { t ->
+                        Text(
+                            text = stringResource(R.string.label_note) + ": \n" + (t.note ?: ""),
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                        Spacer(modifier = Modifier.height(16.dp))
 
-                    Text(
-                        text = stringResource(R.string.label_note) + ": " + (t.note ?: ""),
-                        style = MaterialTheme.typography.bodyMedium
-                    )
-                    Spacer(modifier = Modifier.height(8.dp))
-                    val createdText = Instant.ofEpochMilli(t.createdAt)
-                        .atZone(ZoneId.systemDefault())
-                        .format(formatter)
-                    Text(
-                        text = stringResource(R.string.created_at, createdText),
-                        style = MaterialTheme.typography.bodyMedium
-                    )
-                    Spacer(Modifier.height(8.dp))
-                    val dueText = Instant.ofEpochMilli(t.dueDate)
-                        .atZone(ZoneId.systemDefault())
-                        .format(formatter)
-                    Text(
-                        text = stringResource(R.string.due_date, dueText),
-                        style = MaterialTheme.typography.bodyMedium
-                    )
-                    Spacer(modifier = Modifier.height(8.dp))
+                        val createdText = Instant.ofEpochMilli(t.createdAt)
+                            .atZone(ZoneId.systemDefault())
+                            .format(formatter)
+                        Text(
+                            text = stringResource(R.string.created_at, createdText),
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                        Spacer(Modifier.height(8.dp))
+
+                        val dueText = Instant.ofEpochMilli(t.dueDate)
+                            .atZone(ZoneId.systemDefault())
+                            .format(formatter)
+                        Text(
+                            text = stringResource(R.string.due_date, dueText),
+                            style = MaterialTheme.typography.bodyMedium.copy(
+                                fontWeight = FontWeight.Medium
+                            ),
+                            color = if (t.dueDate < System.currentTimeMillis())
+                                MaterialTheme.colorScheme.error
+                            else
+                                MaterialTheme.colorScheme.primary
+                        )
+                        Spacer(modifier = Modifier.height(8.dp))
+                        PriorityChip(priority = task!!.priority)
+                    }
                 }
             }
         }

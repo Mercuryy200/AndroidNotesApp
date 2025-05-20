@@ -13,10 +13,10 @@ abstract class TaskDatabase : RoomDatabase() {
         @Volatile private var INSTANCE: TaskDatabase? = null
         fun getInstance(context: Context): TaskDatabase = INSTANCE ?: synchronized(this) {
             INSTANCE ?: Room.databaseBuilder(
-                context.applicationContext,
-                TaskDatabase::class.java,
-                "tasks_db"
-            ).fallbackToDestructiveMigration().build().also { INSTANCE = it }
+                        context.applicationContext,
+                        TaskDatabase::class.java,
+                        "tasks_db"
+                    ).fallbackToDestructiveMigration(false).build().also { INSTANCE = it }
         }
     }
 }

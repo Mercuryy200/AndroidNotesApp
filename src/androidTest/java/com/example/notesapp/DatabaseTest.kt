@@ -25,7 +25,8 @@ class DatabaseTest {
     private val task1 = Task(
         id = 1, name = "Faire devoir",
         note = "Faire le devoir de math"
-    );
+    )
+
     @Before
     fun createDb() {
         val context: Context = ApplicationProvider.getApplicationContext()
