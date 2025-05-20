@@ -1,6 +1,5 @@
 package com.example.notesapp.ui.components
 
-import Task
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -19,6 +18,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.ui.Modifier
+import com.example.notesapp.data.model.Task
 import java.util.*
 
 @Composable

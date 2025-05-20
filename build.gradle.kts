@@ -16,7 +16,6 @@ android {
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -42,46 +41,40 @@ android {
 }
 
 dependencies {
-    implementation(libs.androidx.room.runtime)
-    implementation(libs.androidx.navigation.runtime.android)
-    implementation(libs.androidx.navigation.runtime.jvmstubs)
-    implementation(libs.androidx.navigation.compose.jvmstubs)
+    implementation(libs.androidx.room.runtime.v252)
+    implementation(libs.androidx.room.ktx.v252)
+    implementation(libs.androidx.room.rxjava3)
+    implementation(libs.androidx.room.common.jvm)
     ksp(libs.androidx.room.compiler.v250)
-    implementation (libs.androidx.room.ktx)
+
+    implementation(libs.androidx.navigation.runtime.android)
+    implementation(libs.androidx.navigation.compose.v253)
+
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.activity.compose)
-    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.kotlinx.coroutines.android)
+
+    implementation(libs.androidx.lifecycle.runtime.ktx.v261)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.androidx.runtime.livedata)
+
+    implementation(platform(libs.androidx.compose.bom.v20240300))
+    implementation(libs.androidx.activity.compose.v180)
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    implementation(libs.androidx.room.common.jvm)
+    implementation(libs.accompanist.systemuicontroller)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
+    androidTestImplementation(platform(libs.androidx.compose.bom.v20240300))
+
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-    implementation(libs.objectbox.java)
-    implementation(libs.objectbox.java.api)
-    implementation(libs.objectbox.windows)
-    annotationProcessor(libs.objectbox.processor)
-    implementation(platform(libs.androidx.compose.bom.v20240300))
-    implementation(libs.androidx.activity.compose.v180)
-    implementation(libs.material3)
-    implementation(libs.androidx.navigation.compose)
-    implementation(libs.androidx.lifecycle.viewmodel.compose)
-    implementation(libs.androidx.lifecycle.runtime.ktx.v261)
-    implementation(libs.androidx.room.runtime.v252)
-    implementation(libs.androidx.room.ktx.v252)
-    implementation(libs.androidx.room.rxjava3)
-    implementation(libs.kotlinx.coroutines.android)
-    implementation(libs.androidx.lifecycle.livedata.ktx)
-    implementation(libs.androidx.runtime.livedata)
-    implementation(libs.accompanist.systemuicontroller)
-    debugImplementation(libs.ui.tooling)
-    debugImplementation(libs.ui.test.manifest)
-    implementation (libs.androidx.navigation.compose.v253)
+    debugImplementation(libs.androidx.compose.ui.ui.test.manifest)
+    androidTestImplementation(libs.ui.test.junit4)
+    implementation(libs.threetenabp)
 }

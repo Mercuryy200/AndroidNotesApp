@@ -1,14 +1,17 @@
-import androidx.lifecycle.LiveData
-import com.example.notesapp.data.database.TaskDao
+package com.example.notesapp.data.database
+
+import com.example.notesapp.data.model.Task
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
 
 class TaskRepository(private val dao: TaskDao) {
 
-    val allTasks: LiveData<List<Task>> = dao.getAll()
+    suspend fun getAllTasks(): Array<Task> = withContext(Dispatchers.IO) {
+        dao.getAll()
+    }
 
-    fun getTask(id: Long): LiveData<Task?> = dao.getById(id)
-
+    fun getTask(id: Long): Flow<Task?> = dao.getById(id)
     suspend fun add(task: Task) = withContext(Dispatchers.IO) {
         dao.insert(task)
     }
