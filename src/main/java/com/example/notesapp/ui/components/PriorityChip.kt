@@ -22,6 +22,7 @@ fun PriorityChip(priority: Priority) {
         modifier = Modifier
             .clip(RoundedCornerShape(16.dp))
             .background(backgroundColor)
-            .padding(horizontal = 8.dp, vertical = 4.dp)
+            .padding(horizontal = 8.dp, vertical = 4.dp),
+        color = Color.Black
     )
 }

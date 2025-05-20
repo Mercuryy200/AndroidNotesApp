@@ -7,9 +7,7 @@ import kotlinx.coroutines.withContext
 
 class TaskRepository(private val dao: TaskDao) {
 
-    suspend fun getAllTasks(): Array<Task> = withContext(Dispatchers.IO) {
-        dao.getAll()
-    }
+    val allTasks: Flow<List<Task>> = dao.getAll()
 
     fun getTask(id: Long): Flow<Task?> = dao.getById(id)
     suspend fun add(task: Task) = withContext(Dispatchers.IO) {

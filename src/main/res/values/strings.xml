@@ -24,5 +24,7 @@
     <string name="edit">Edit</string>
     <string name="delete">Delete</string>
     <string name="label_priority">Priority</string>
-
+    <string name="confirm_title">Confirm deletion</string>
+    <string name="empty_task_list">Task List is Empty</string>
+    <string name="created_at">Created on: %1$s</string>
 </resources>

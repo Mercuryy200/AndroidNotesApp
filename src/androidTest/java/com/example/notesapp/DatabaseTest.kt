@@ -8,6 +8,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.notesapp.data.database.TaskDao
 import com.example.notesapp.data.database.TaskDatabase
 import com.example.notesapp.data.model.Task
+import kotlinx.coroutines.flow.count
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Assert.assertEquals
@@ -43,9 +44,8 @@ class DatabaseTest {
         taskDao.insert(task1)
         val tasks = taskDao.getAll()
         assertEquals(
-            "Expected exactly 1 task in the database, but got ${tasks.size}",
             1,
-            tasks.size
+            tasks.count()
         )
     }
 }

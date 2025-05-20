@@ -5,11 +5,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import com.example.notesapp.data.model.Task
 import com.example.notesapp.data.database.TaskRepository
+import androidx.lifecycle.asLiveData
 
-class TaskViewModel(private val repo: TaskRepository) : ViewModel() {
 
-    val allTasksLive: LiveData<Array<Task>> =
-        liveData(Dispatchers.IO) { emit(repo.getAllTasks()) }
+class TaskViewModel(val repo: TaskRepository) : ViewModel() {
+
+    val allTasks : LiveData<List<Task>> = repo.allTasks.asLiveData()
     private val _selected = MutableLiveData<Task?>()
     val selected: LiveData<Task?> = _selected
 

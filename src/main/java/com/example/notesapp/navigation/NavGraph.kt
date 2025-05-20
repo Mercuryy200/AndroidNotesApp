@@ -35,34 +35,35 @@ fun AppNavGraph(viewModel: TaskViewModel) {
                 onSelect = { navController.navigate(Screen.Detail.createRoute(it)) }
             )
         }
+
         composable(
             route = Screen.Detail.route,
             arguments = listOf(navArgument("taskId") { type = NavType.LongType })
         ) { backStackEntry ->
-            val id = backStackEntry.arguments?.getLong("taskId") ?: 0L
+            val id = backStackEntry.arguments?.getLong("taskId") ?: return@composable
             viewModel.select(id)
             TaskDetailScreen(
                 viewModel = viewModel,
                 onEdit = { navController.navigate(Screen.Edit.createRoute(id)) },
-                onDelete = { viewModel.delete(viewModel.selected.value!!); navController.popBackStack() },
+                onDeleteConfirmed = { viewModel.delete(viewModel.selected.value!!); navController.popBackStack() },
                 onBack = { navController.popBackStack() }
             )
         }
+
         composable(
             route = Screen.Edit.route,
             arguments = listOf(navArgument("taskId") {
                 type = NavType.LongType
                 defaultValue = -1L
-                nullable = true
             })
         ) { backStackEntry ->
             val idArg = backStackEntry.arguments?.getLong("taskId")
             val taskId = if (idArg != null && idArg >= 0L) idArg else null
             EditTaskScreen(
                 viewModel = viewModel,
-                taskId = taskId,
-                onSave = { navController.popBackStack() },
-                onCancel = { navController.popBackStack() }
+                taskId    = taskId,
+                onSave    = { navController.popBackStack() },
+                onCancel  = { navController.popBackStack() },  // ← add this
             )
         }
     }

@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface TaskDao {
     @Query("SELECT * FROM tasks ORDER BY due_date ASC")
-    fun getAll(): Array<Task>
+    fun getAll(): Flow<List<Task>>
 
     @Query("SELECT * FROM tasks WHERE id = :id LIMIT 1")
     fun getById(id: Long): Flow<Task?>
