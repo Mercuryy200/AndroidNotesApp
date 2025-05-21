@@ -39,7 +39,7 @@ fun PriorityDropdown(
             label = { Text(stringResource(R.string.label_priority)) },
             trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded) },
             modifier = Modifier
-                .menuAnchor(type, enabled)
+                .menuAnchor()
                 .fillMaxWidth()
         )
 
