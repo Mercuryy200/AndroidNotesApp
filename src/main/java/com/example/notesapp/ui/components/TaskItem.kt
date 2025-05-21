@@ -1,5 +1,6 @@
 package com.example.notesapp.ui.components
 
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material3.MaterialTheme
@@ -9,8 +10,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import com.example.notesapp.data.model.Task
 import org.threeten.bp.Instant
 import org.threeten.bp.ZoneId
@@ -21,6 +24,9 @@ import org.threeten.bp.format.DateTimeFormatter
     onClick: () -> Unit,
     onCheckedChange: (Boolean) -> Unit
 ) {
+    val targetAlpha = if (task.isCompleted) 0.5f else 1f
+    val rowAlpha by animateFloatAsState(targetAlpha)
+
     val formatter = DateTimeFormatter.ofPattern("dd MMM yyyy")
     val formattedDate = Instant.ofEpochMilli(task.dueDate)
         .atZone(ZoneId.systemDefault())
@@ -29,6 +35,7 @@ import org.threeten.bp.format.DateTimeFormatter
     Row(
         modifier = Modifier
             .fillMaxWidth()
+            .alpha(rowAlpha)
             .padding(16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {

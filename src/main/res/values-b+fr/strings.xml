@@ -5,20 +5,9 @@
     <string name="cancel">Annuler</string>
     <string name="delete">Supprimer</string>
     <string name="save">Enregistrer</string>
-
     <string name="task_list_title">Liste des tâches</string>
-    <string name="add_task">Ajouter une tâche</string>
     <string name="confirm_delete">Supprimer la tâche ?</string>
-    <string name="confirm_delete_message">Êtes-vous sûr de vouloir supprimer cette tâche ?</string>
-    <string name="task_not_found">Tâche non trouvée</string>
     <string name="edit_task">Modifier la tâche</string>
-    <string name="completed">Terminée</string>
-    <string name="incomplete">Incomplète</string>
-    <string name="task_title">Titre de la tâche</string>
-    <string name="task_description">Description de la tâche</string>
-    <string name="fields_required">Tous les champs sont obligatoires</string>
-    <string name="title_task_list">Mes tâches</string>
-    <string name="button_add">Ajouter tâche</string>
     <string name="label_name">Nom</string>
     <string name="label_note">Note</string>
     <string name="new_task">Nouvelle tâche</string>
@@ -28,5 +17,8 @@
     <string name="confirm_title">Confirmer la suppression</string>
     <string name="empty_task_list">La liste des tâches est vide</string>
     <string name="created_at">Créé le: %1$s</string>
+    <string name="priority_low">Bas</string>
+    <string name="priority_medium">Moyen</string>
+    <string name="priority_high">Élevé</string>
 
 </resources>

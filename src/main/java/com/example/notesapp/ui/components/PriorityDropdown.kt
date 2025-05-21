@@ -33,13 +33,13 @@ fun PriorityDropdown(
         modifier = Modifier.fillMaxWidth()
     ) {
         TextField(
-            value = selected.name,
+            value = stringResource(selected.labelRes),
             onValueChange = {  },
             readOnly = true,
             label = { Text(stringResource(R.string.label_priority)) },
             trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded) },
             modifier = Modifier
-                .menuAnchor()
+                .menuAnchor(type, enabled)
                 .fillMaxWidth()
         )
 
@@ -52,7 +52,7 @@ fun PriorityDropdown(
         ) {
             Priority.values().forEach { priority ->
                 DropdownMenuItem(
-                    text = { Text(priority.name) },
+                    text = { Text(stringResource(priority.labelRes)) },
                     onClick = {
                         onSelect(priority)
                         expanded = false

@@ -1,8 +1,10 @@
 
 package com.example.notesapp.data.model
+import androidx.annotation.StringRes
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.example.notesapp.R
 
 @Entity(tableName = "tasks")
 data class Task(
@@ -14,7 +16,8 @@ data class Task(
     @ColumnInfo(name = "is_completed") var isCompleted: Boolean = false,
     @ColumnInfo(name = "due_date") var dueDate: Long = System.currentTimeMillis(),
 )
-
-enum class Priority{
-    BAS, MOYEN, ÉLEVÉ;
+enum class Priority(@StringRes val labelRes: Int) {
+    BAS(R.string.priority_low),
+    MOYEN(R.string.priority_medium),
+    ÉLEVÉ(R.string.priority_high);
 }

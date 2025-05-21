@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.notesapp.data.model.Priority
 @Composable
@@ -18,7 +19,7 @@ fun PriorityChip(priority: Priority) {
         Priority.ÉLEVÉ -> Color(0xFFE57373)
     }
     Text(
-        text = priority.name,
+        text = stringResource(priority.labelRes),
         modifier = Modifier
             .clip(RoundedCornerShape(16.dp))
             .background(backgroundColor)

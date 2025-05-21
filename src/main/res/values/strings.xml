@@ -17,4 +17,7 @@
     <string name="confirm_title">Confirm deletion</string>
     <string name="empty_task_list">Task List is Empty</string>
     <string name="created_at">Created on: %1$s</string>
+    <string name="priority_low">Low</string>
+    <string name="priority_medium">Medium</string>
+    <string name="priority_high">High</string>
 </resources>
