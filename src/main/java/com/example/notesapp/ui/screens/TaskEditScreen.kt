@@ -65,7 +65,7 @@ fun EditTaskScreen(
     val nameState     = rememberSaveable(taskId) { mutableStateOf("") }
     val noteState     = rememberSaveable(taskId) { mutableStateOf("") }
     val dueDateState  = rememberSaveable(taskId) { mutableLongStateOf(System.currentTimeMillis()) }
-    val priorityState = rememberSaveable(taskId) { mutableStateOf(Priority.MOYEN) }
+    val priorityState = rememberSaveable(taskId) { mutableStateOf(Priority.MEDIUM) }
 
 
     LaunchedEffect(taskId) {

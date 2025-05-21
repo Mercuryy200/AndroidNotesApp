@@ -14,9 +14,9 @@ import com.example.notesapp.data.model.Priority
 @Composable
 fun PriorityChip(priority: Priority) {
     val backgroundColor = when (priority) {
-        Priority.BAS -> Color(0xFF81C784)
-        Priority.MOYEN -> Color(0xFFFFF176)
-        Priority.ÉLEVÉ -> Color(0xFFE57373)
+        Priority.LOW -> Color(0xFF81C784)
+        Priority.MEDIUM -> Color(0xFFFFF176)
+        Priority.HIGH -> Color(0xFFE57373)
     }
     Text(
         text = stringResource(priority.labelRes),
