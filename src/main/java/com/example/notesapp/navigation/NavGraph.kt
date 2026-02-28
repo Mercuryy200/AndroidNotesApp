@@ -1,6 +1,7 @@
 package com.example.notesapp.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -22,8 +23,10 @@ sealed class Screen(val route: String) {
 }
 
 @Composable
-fun AppNavGraph(viewModel: TaskViewModel) {
+fun AppNavGraph() {
     val navController = rememberNavController()
+    val viewModel: TaskViewModel = hiltViewModel()
+
     NavHost(
         navController = navController,
         startDestination = Screen.List.route
@@ -61,9 +64,9 @@ fun AppNavGraph(viewModel: TaskViewModel) {
             val taskId = if (idArg != null && idArg >= 0L) idArg else null
             EditTaskScreen(
                 viewModel = viewModel,
-                taskId    = taskId,
-                onSave    = { navController.popBackStack() },
-                onCancel  = { navController.popBackStack() },  // ← add this
+                taskId = taskId,
+                onSave = { navController.popBackStack() },
+                onCancel = { navController.popBackStack() }
             )
         }
     }
