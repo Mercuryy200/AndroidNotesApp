@@ -1,6 +1,6 @@
 # AndroidNotesApp
 
-[![Android CI](https://github.com/USERNAME/AndroidNotesApp/actions/workflows/android-ci.yml/badge.svg)](https://github.com/USERNAME/AndroidNotesApp/actions/workflows/android-ci.yml)
+[![Android CI](https://github.com/Mercuryy200/AndroidNotesApp/actions/workflows/android-ci.yml/badge.svg)](https://github.com/Mercuryy200/AndroidNotesApp/actions/workflows/android-ci.yml)
 
 A production-quality task management Android application built with modern Android development best practices. Create, organise, and track tasks with priority levels, due dates, completion status, search/filter, persistent preferences, and timely notifications.
 
@@ -8,7 +8,7 @@ A production-quality task management Android application built with modern Andro
 
 |             Task List             |              Task Detail              |             Edit Task             |
 | :-------------------------------: | :-----------------------------------: | :-------------------------------: |
-| [Task List](/images/TaskList.png) | [Task Detail](/images/TaskDetail.png) | [Task Edit](/images/TaskEdit.png) |
+| ![Task List](/images/TaskList.png) | ![Task Detail](/images/TaskDetail.png) | ![Task Edit](/images/TaskEdit.png) |
 
 ## Features
 
