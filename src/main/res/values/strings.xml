@@ -20,4 +20,16 @@
     <string name="priority_low">Low</string>
     <string name="priority_medium">Medium</string>
     <string name="priority_high">High</string>
+
+    <!-- Search &amp; Filter -->
+    <string name="search_hint">Search tasks…</string>
+    <string name="filter_hide_completed">Hide completed</string>
+    <string name="sort_order_toggle">Toggle sort order</string>
+    <string name="add_task">Add task</string>
+
+    <!-- Notifications -->
+    <string name="notification_title">Task Reminder</string>
+    <string name="notification_channel_name">Task Reminders</string>
+    <string name="notification_channel_desc">Notifications for upcoming task due dates</string>
+
 </resources>

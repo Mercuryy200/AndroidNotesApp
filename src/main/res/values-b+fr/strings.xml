@@ -21,4 +21,15 @@
     <string name="priority_medium">Moyen</string>
     <string name="priority_high">Élevé</string>
 
+    <!-- Recherche &amp; Filtres -->
+    <string name="search_hint">Rechercher des tâches…</string>
+    <string name="filter_hide_completed">Masquer terminées</string>
+    <string name="sort_order_toggle">Changer l\'ordre de tri</string>
+    <string name="add_task">Ajouter une tâche</string>
+
+    <!-- Notifications -->
+    <string name="notification_title">Rappel de tâche</string>
+    <string name="notification_channel_name">Rappels de tâches</string>
+    <string name="notification_channel_desc">Notifications pour les dates d\'échéance des tâches</string>
+
 </resources>

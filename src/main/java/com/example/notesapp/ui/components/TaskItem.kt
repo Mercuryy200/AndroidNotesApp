@@ -14,6 +14,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.res.stringResource
+import com.example.notesapp.R
 import com.example.notesapp.data.model.Task
 import org.threeten.bp.Instant
 import org.threeten.bp.ZoneId
@@ -55,7 +57,7 @@ import org.threeten.bp.format.DateTimeFormatter
             )
             Spacer(modifier = Modifier.height(4.dp))
             Text(
-                text = "À faire pour: $formattedDate",
+                text = stringResource(R.string.due_date, formattedDate),
                 style = MaterialTheme.typography.bodySmall
             )
         }
