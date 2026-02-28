@@ -3,7 +3,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    id("com.google.devtools.ksp")
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt.android)
 }
 
 android {
@@ -41,23 +42,25 @@ android {
 }
 
 dependencies {
+    // Room
     implementation(libs.androidx.room.runtime.v252)
     implementation(libs.androidx.room.ktx.v252)
-    implementation(libs.androidx.room.rxjava3)
-    implementation(libs.androidx.room.common.jvm)
     ksp(libs.androidx.room.compiler.v250)
 
-    implementation(libs.androidx.navigation.runtime.android)
+    // Navigation
     implementation(libs.androidx.navigation.compose.v253)
 
+    // Core
     implementation(libs.androidx.core.ktx)
     implementation(libs.kotlinx.coroutines.android)
 
+    // Lifecycle
     implementation(libs.androidx.lifecycle.runtime.ktx.v261)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.runtime.livedata)
 
+    // Compose
     implementation(platform(libs.androidx.compose.bom.v20240300))
     implementation(libs.androidx.activity.compose.v180)
     implementation(libs.androidx.ui)
@@ -66,15 +69,39 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.accompanist.systemuicontroller)
 
+    // Hilt
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.android.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
+
+    // WorkManager + Hilt Work
+    implementation(libs.work.runtime.ktx)
+    implementation(libs.hilt.work)
+    ksp(libs.androidx.hilt.compiler)
+
+    // DataStore
+    implementation(libs.datastore.preferences)
+
+    // ThreeTen
+    implementation(libs.threetenabp)
+
+    // Unit tests
     testImplementation(libs.junit)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.turbine)
+    testImplementation(libs.mockk)
+    testImplementation(libs.androidx.arch.core.testing)
+
+    // Instrumented tests
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.ui.test.junit4)
     androidTestImplementation(platform(libs.androidx.compose.bom.v20240300))
+    androidTestImplementation(libs.hilt.android.testing)
+    kspAndroidTest(libs.hilt.android.compiler)
 
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
     debugImplementation(libs.androidx.compose.ui.ui.test.manifest)
     androidTestImplementation(libs.ui.test.junit4)
-    implementation(libs.threetenabp)
 }
